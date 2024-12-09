@@ -1,0 +1,54 @@
+<form [formGroup]="configForm" (submit)="submitForm($event)">
+    <mat-form-field>
+        <mat-label>Total Tickets For vendor</mat-label>
+        <input id="totalTicketsForVendor" formControlName="totalTicketsForVendor" matInput type="number" required>
+        @if (configForm.hasError('totalTicketsForVendor') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Total Tickets For Customer</mat-label>
+        <input id="totalTicketsForCustomer" formControlName="totalTicketsForCustomer" matInput type="number" required>
+        @if (configForm.hasError('totalTicketsForCustomer') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Total Vendors</mat-label>
+        <input id="totalVendors" formControlName="totalVendors" matInput type="number" required>
+        @if (configForm.hasError('totalVendors') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Total Consumer</mat-label>
+        <input id="totalConsumer" formControlName="totalConsumer" matInput type="number" required>
+        @if (configForm.hasError('totalConsumer') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Vendor Sleep Time</mat-label>
+        <input id="vendorSleepTime" formControlName="vendorSleepTime" matInput type="number" required>
+        @if (configForm.hasError('vendorSleepTime') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Consumer Sleep Time</mat-label>
+        <input id="consumerSleepTime" formControlName="consumerSleepTime" matInput type="number" required>
+        @if (configForm.hasError('consumerSleepTime') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <div>
+        <button mat-stroked-button color="primary" type="submit">Configure</button>
+        <button  mat-stroked-button color="primary" type="reset">Reset</button>
+    </div>
+</form>

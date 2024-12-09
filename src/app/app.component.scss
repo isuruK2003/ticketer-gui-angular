@@ -1,0 +1,30 @@
+.flex-h-c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-h-sb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.nav {
+    width: 800px;
+    max-width: 1200px;
+    box-sizing: border-box;
+    border-radius: 5rem;
+    padding: 0.5rem 0.8rem;
+    background-color: rgba($color: #9d9d9d, $alpha: 0.1);
+}
+
+.logo {
+    padding-left: 1rem;
+}
