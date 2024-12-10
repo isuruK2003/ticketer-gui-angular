@@ -1,0 +1,12 @@
+<h4 mat-dialog-title>{{ data.title }}</h4>
+<mat-dialog-content class="dialog-content">
+  <p>{{ data.content }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+  @if (data.confirmButton) {
+    <button mat-button (click)="onConfirm()">
+      {{ data.confirmButtonText || 'Confirm' }}
+    </button>
+  }
+</mat-dialog-actions>

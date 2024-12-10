@@ -3,7 +3,7 @@ import { Chart } from "chart.js";
 import { registerables } from 'chart.js';
 import { SimulationStatus } from '../__models__/simulation.status';
 import { SimulationWebsocketService } from '../__services__/simulation.ws.service';
-
+import { MatCardModule } from '@angular/material/card';
 
 Chart.register(...registerables);
 
@@ -12,7 +12,9 @@ Chart.register(...registerables);
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
   styleUrl: './visualization.component.scss',
-  imports: [],
+  imports: [
+    MatCardModule
+  ],
 })
 export class VisualizationComponent {
 
@@ -29,7 +31,7 @@ export class VisualizationComponent {
   data = {
     labels: this.timeCoordinates,
     datasets: [{
-      label: 'TicketPool',
+      label: 'TicketPool Size',
       data: this.stimulationStatusList,
       fill: true,
       borderColor: 'rgb(75, 192, 192)',
@@ -40,6 +42,23 @@ export class VisualizationComponent {
   config: any = {
     type: 'line',
     data: this.data,
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          stacked: true,
+          grid: {
+            display: true,
+            color: "rgba(255,99,132,0.2)"
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
   };
 
   chart: any;
@@ -52,20 +71,17 @@ export class VisualizationComponent {
     this.enableChangeDetection();
   }
 
-  
   private enableChangeDetection(): void {
     this.simulationWebsocketService.simulationStatusChaged.subscribe(() => {
+      
       this.simulationStatus = this.simulationWebsocketService.simulationStatus;
       this.stimulationStatusList = this.simulationWebsocketService.stimulationStatusList;
-      this.timeCoordinates = this.simulationWebsocketService.timeCoordinates;
-      // this.previousTimeCoordinate = this.simulationWebsocketService.previousTimeCoordinate;
+      this.timeCoordinates = this.simulationWebsocketService.timeCoordinates;;
+      this.data.labels = this.timeCoordinates;
+      this.data.datasets[0].data = this.stimulationStatusList;
 
-      this.data.labels = this.timeCoordinates; // Update the chart labels
-      this.data.datasets[0].data = this.stimulationStatusList; // Update the chart data
-
-      // Trigger change detection and update the chart
       this.cdRef.detectChanges();
-      this.chart.update(); // Explicitly update the chart to reflect changes
+      this.chart.update();
     });
   }
 }

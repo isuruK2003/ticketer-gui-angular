@@ -1,66 +1,136 @@
-<p>Past Configurations</p>
+<div class="container">
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="New Configuration">
+            <mat-stepper class="margin" [linear]="false" orientation="vertical" #stepper>
+                <form [formGroup]="configForm" (submit)="submitForm($event)">
+                    <mat-step label="Enter Total Tickets">
+                    <div class="inputs">
+                        <mat-form-field class="width-custom">
+                            <mat-label>Total Tickets For vendor</mat-label>
+                            <input id="totalTicketsForVendor" formControlName="totalTicketsForVendor" matInput type="number" required>
+                            @if (configForm.hasError('totalTicketsForVendor') && !configForm.hasError('required')) {
+                                <mat-error>Please enter a value between _ to _</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-custom">
+                            <mat-label>Total Tickets For Customer</mat-label>
+                            <input id="totalTicketsForCustomer" formControlName="totalTicketsForCustomer" matInput type="number" required>
+                            @if (configForm.hasError('totalTicketsForCustomer') && !configForm.hasError('required')) {
+                                <mat-error>Please enter a value between _ to _</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    </mat-step>
 
-<app-table></app-table>
-
-<form [formGroup]="configForm" (submit)="submitForm($event)">
-    <mat-form-field>
-        <mat-label>Total Tickets For vendor</mat-label>
-        <input id="totalTicketsForVendor" formControlName="totalTicketsForVendor" matInput type="number" required>
-        @if (configForm.hasError('totalTicketsForVendor') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Total Tickets For Customer</mat-label>
-        <input id="totalTicketsForCustomer" formControlName="totalTicketsForCustomer" matInput type="number" required>
-        @if (configForm.hasError('totalTicketsForCustomer') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Total Vendors</mat-label>
-        <input id="totalVendors" formControlName="totalVendors" matInput type="number" required>
-        @if (configForm.hasError('totalVendors') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Total Consumer</mat-label>
-        <input id="totalConsumers" formControlName="totalConsumers" matInput type="number" required>
-        @if (configForm.hasError('totalConsumers') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Ticket Release Rate</mat-label>
-        <input id="ticketReleaseRate" formControlName="ticketReleaseRate" matInput type="number" required>
-        @if (configForm.hasError('ticketReleaseRate') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Consumer Retrieval Rate</mat-label>
-        <input id="customerRetrievalRate" formControlName="customerRetrievalRate" matInput type="number" required>
-        @if (configForm.hasError('customerRetrievalRate') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Maximum Ticket Capacity</mat-label>
-        <input id="maxTicketCapacity" formControlName="maxTicketCapacity" matInput type="number" required>
-        @if (configForm.hasError('maxTicketCapacity') && !configForm.hasError('required')) {
-            <mat-error>Please enter a value between _ to _</mat-error>
-        }
-    </mat-form-field>
-
-    <div>
-        <button mat-stroked-button color="primary" type="submit">Configure</button>
-        <button  mat-stroked-button color="primary" type="reset">Reset</button>
-    </div>
-</form>
+                    <mat-step label="Enter Total Vendors and Customers">
+                    <div class="inputs">
+                        <mat-form-field class="width-custom">
+                                <mat-label>Total Vendors</mat-label>
+                                <input id="totalVendors" formControlName="totalVendors" matInput type="number" required>
+                                @if (configForm.hasError('totalVendors') && !configForm.hasError('required')) {
+                                    <mat-error>Please enter a value between _ to _</mat-error>
+                                }
+                        </mat-form-field>
+                        <mat-form-field class="width-custom">
+                                <mat-label>Total Consumer</mat-label>
+                                <input id="totalConsumers" formControlName="totalConsumers" matInput type="number" required>
+                                @if (configForm.hasError('totalConsumers') && !configForm.hasError('required')) {
+                                    <mat-error>Please enter a value between _ to _</mat-error>
+                                }
+                        </mat-form-field>
+                    </div> 
+                    </mat-step>
+                
+                    <mat-step label="Enter Ticket Release and Retrieval Rates">
+                    <div class="inputs">
+                        <mat-form-field class="width-custom">
+                            <mat-label>Ticket Release Rate</mat-label>
+                            <input id="ticketReleaseRate" formControlName="ticketReleaseRate" matInput type="number" required>
+                            @if (configForm.hasError('ticketReleaseRate') && !configForm.hasError('required')) {
+                                <mat-error>Please enter a value between _ to _</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field class="width-custom">
+                            <mat-label>Consumer Retrieval Rate</mat-label>
+                            <input id="customerRetrievalRate" formControlName="customerRetrievalRate" matInput type="number" required>
+                            @if (configForm.hasError('customerRetrievalRate') && !configForm.hasError('required')) {
+                                <mat-error>Please enter a value between _ to _</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    </mat-step>
+                
+                    <mat-step label="Maximum Ticket Capacity">
+                    <div class="inputs">
+                        <mat-form-field class="width-custom">
+                            <mat-label>Maximum Ticket Capacity</mat-label>
+                            <input id="maxTicketCapacity" formControlName="maxTicketCapacity" matInput type="number" required>
+                            @if (configForm.hasError('maxTicketCapacity') && !configForm.hasError('required')) {
+                                <mat-error>Please enter a value between _ to _</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    </mat-step>
+                
+                    <mat-step>
+                    <div class="inputs-end">
+                        <ng-template matStepLabel>Done</ng-template>        
+                        <button mat-stroked-button color="primary" type="submit" (click)="submitForm($event)">Configure</button>
+                        <button mat-stroked-button color="primary" type="reset" (click)="stepper.reset()">Reset</button>
+                    </div>
+                    </mat-step>
+                </form>
+            </mat-stepper>
+        </mat-tab>
+        <mat-tab label="Past Configuration">
+            <mat-card class="margin overflow-hidden" appearance="outlined">
+                <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- totalTicketsForCustomer Column -->
+                    <ng-container matColumnDef="totalTicketsForCustomer">
+                    <th mat-header-cell *matHeaderCellDef>Total Customer Tickets</th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalTicketsForCustomer}} </td>
+                    </ng-container>
+                
+                    <!-- totalTicketsForVendor Column -->
+                    <ng-container matColumnDef="totalTicketsForVendor">
+                    <th mat-header-cell *matHeaderCellDef>Total Venndor Tickets</th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalTicketsForVendor}} </td>
+                    </ng-container>
+                
+                    <!-- totalVendors Column -->
+                    <ng-container matColumnDef="totalVendors">
+                    <th mat-header-cell *matHeaderCellDef> Total Vendors </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalVendors}} </td>
+                    </ng-container>
+                
+                    <!-- totalConsumers Column -->
+                    <ng-container matColumnDef="totalConsumers">
+                    <th mat-header-cell *matHeaderCellDef> Total Consumers </th>
+                    <td mat-cell *matCellDef="let element"> {{element.totalConsumers}} </td>
+                    </ng-container>
+                
+                    <!-- ticketReleaseRate Column -->
+                    <ng-container matColumnDef="ticketReleaseRate">
+                        <th mat-header-cell *matHeaderCellDef> Ticket ReleaseRate </th>
+                        <td mat-cell *matCellDef="let element"> {{element.ticketReleaseRate}} </td>
+                    </ng-container>
+                
+                    <!-- customerRetrievalRate Column -->
+                    <ng-container matColumnDef="customerRetrievalRate">
+                        <th mat-header-cell *matHeaderCellDef> Customer RetrievalRate </th>
+                        <td mat-cell *matCellDef="let element"> {{element.customerRetrievalRate}} </td>
+                    </ng-container>
+                
+                    <!-- maxTicketCapacity Column -->
+                    <ng-container matColumnDef="maxTicketCapacity">
+                        <th mat-header-cell *matHeaderCellDef> Max TicketCapacity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.maxTicketCapacity}} </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr class="data-row" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)"></tr>
+                </table>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+</div>

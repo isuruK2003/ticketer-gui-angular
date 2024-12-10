@@ -1,8 +1,11 @@
-<button mat-stroked-button (click)="initializeConsumers()">Initialize Consumers</button>
-<button mat-stroked-button (click)="initializeVendors()">Initialize Vendors</button>
-<button mat-stroked-button (click)="startVendors()">Start Vendors</button>
-<button mat-stroked-button (click)="startConsumers()">Start Consumers</button>
-<button mat-stroked-button (click)="stopVendors()">Stop Vendors</button>
-<button mat-stroked-button (click)="stopConsumers()">Stop Consumers</button>
-<button mat-stroked-button (click)="clearConsumers()">Clear Consumers</button>
-<button mat-stroked-button (click)="clearVendors()">Clear Vendors</button>
+<div class="controllers-container">
+    <mat-card class="start-section" appearance="outlined">
+        <section [formGroup]="startUpSelections">
+            <p>Configure Startup</p>
+            <p><mat-checkbox formControlName="startVendors">Start Vendors</mat-checkbox></p>
+            <p><mat-checkbox formControlName="startConsumers">Start Consumers</mat-checkbox></p>
+        </section>
+        <button mat-stroked-button (click)="start()">Start</button>
+        <button mat-stroked-button (click)="stop()">Stop</button>
+    </mat-card>
+</div>

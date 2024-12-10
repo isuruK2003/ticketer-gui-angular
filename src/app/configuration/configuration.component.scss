@@ -1,0 +1,42 @@
+tr.data-row:hover {
+    background-color: rgba($color: #666, $alpha: 0.1); /* Correct RGBA syntax */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.inputs {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.inputs-end {
+    padding: 1rem 0;
+}
+
+.inputs-end button {
+    width: 100px;
+    margin-right: 1rem;
+}
+
+.width-custom {
+    width: 350px;
+}
+
+.margin {
+    margin: 1rem 0;
+}
