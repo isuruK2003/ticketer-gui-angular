@@ -2,7 +2,8 @@ export interface SimulationConfiguration {
     totalTicketsForCustomer : number,
     totalTicketsForVendor : number,
     totalVendors : number,
-    totalConsumer : number,
-    vendorSleepTime : number,
-    consumerSleepTime : number
+    totalConsumers : number,
+    ticketReleaseRate : number,
+    customerRetrievalRate : number,
+    maxTicketCapacity : number
 }

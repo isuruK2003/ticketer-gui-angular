@@ -1,3 +1,7 @@
+<p>Past Configurations</p>
+
+<app-table></app-table>
+
 <form [formGroup]="configForm" (submit)="submitForm($event)">
     <mat-form-field>
         <mat-label>Total Tickets For vendor</mat-label>
@@ -25,24 +29,32 @@
 
     <mat-form-field>
         <mat-label>Total Consumer</mat-label>
-        <input id="totalConsumer" formControlName="totalConsumer" matInput type="number" required>
-        @if (configForm.hasError('totalConsumer') && !configForm.hasError('required')) {
+        <input id="totalConsumers" formControlName="totalConsumers" matInput type="number" required>
+        @if (configForm.hasError('totalConsumers') && !configForm.hasError('required')) {
             <mat-error>Please enter a value between _ to _</mat-error>
         }
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Vendor Sleep Time</mat-label>
-        <input id="vendorSleepTime" formControlName="vendorSleepTime" matInput type="number" required>
-        @if (configForm.hasError('vendorSleepTime') && !configForm.hasError('required')) {
+        <mat-label>Ticket Release Rate</mat-label>
+        <input id="ticketReleaseRate" formControlName="ticketReleaseRate" matInput type="number" required>
+        @if (configForm.hasError('ticketReleaseRate') && !configForm.hasError('required')) {
             <mat-error>Please enter a value between _ to _</mat-error>
         }
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Consumer Sleep Time</mat-label>
-        <input id="consumerSleepTime" formControlName="consumerSleepTime" matInput type="number" required>
-        @if (configForm.hasError('consumerSleepTime') && !configForm.hasError('required')) {
+        <mat-label>Consumer Retrieval Rate</mat-label>
+        <input id="customerRetrievalRate" formControlName="customerRetrievalRate" matInput type="number" required>
+        @if (configForm.hasError('customerRetrievalRate') && !configForm.hasError('required')) {
+            <mat-error>Please enter a value between _ to _</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Maximum Ticket Capacity</mat-label>
+        <input id="maxTicketCapacity" formControlName="maxTicketCapacity" matInput type="number" required>
+        @if (configForm.hasError('maxTicketCapacity') && !configForm.hasError('required')) {
             <mat-error>Please enter a value between _ to _</mat-error>
         }
     </mat-form-field>

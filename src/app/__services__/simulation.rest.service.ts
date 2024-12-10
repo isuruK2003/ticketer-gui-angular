@@ -16,6 +16,14 @@ export class SimulationService {
     return this.http.post<SimulationConfiguration>(this.baseUrl + "/configure", newConfig);
   }
 
+  saveConfiguration(currentConfig : SimulationConfiguration) {
+    return this.http.post<SimulationConfiguration>(this.baseUrl + "/save-configuration", currentConfig);
+  }
+
+  getSavedConfigurations() {
+    return this.http.get<null>(this.baseUrl + '/get-saved-configurations')
+  }
+
   initializeConsumers() {
     return this.http.get<null>(this.baseUrl + '/initialize-consumers');
   }

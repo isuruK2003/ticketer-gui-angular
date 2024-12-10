@@ -9,6 +9,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { SimulationConfiguration } from '../__models__/simulation.configuration';
 import { SimulationService } from '../__services__/simulation.rest.service';
+import { TableComponent } from "../table/table.component";
 
 @Component({
   standalone: true,
@@ -20,16 +21,16 @@ import { SimulationService } from '../__services__/simulation.rest.service';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule, 
-    ],
+    ReactiveFormsModule,
+    TableComponent
+],
 })
 export class ConfigurationComponent {
   configForm : any;
 
   constructor(
     private formBuilder : FormBuilder,
-    private simulationService : SimulationService,
-    private cdRef : ChangeDetectorRef
+    private simulationService : SimulationService
   ) { }
 
   ngOnInit() : void {
@@ -38,12 +39,13 @@ export class ConfigurationComponent {
 
   private initializeConfigForm() {
     this.configForm = this.formBuilder.group({
-      totalTicketsForVendor : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
-      totalTicketsForCustomer : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      totalTicketsForVendor : ['', [Validators.required, Validators.min(1), Validators.max(100)]],
+      totalTicketsForCustomer : ['', [Validators.required, Validators.min(1), Validators.max(100)]],
       totalVendors : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
-      totalConsumer : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
-      vendorSleepTime : ['', [Validators.required, Validators.min(500), Validators.max(5000)]],
-      consumerSleepTime : ['', [Validators.required, Validators.min(500), Validators.max(5000)]],
+      totalConsumers : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      ticketReleaseRate : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      customerRetrievalRate : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      maxTicketCapacity : ['', [Validators.required, Validators.min(1), Validators.max(100)]]
     });
   }
 
