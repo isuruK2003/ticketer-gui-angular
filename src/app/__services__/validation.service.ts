@@ -8,7 +8,7 @@ import { ValidationConstraint } from '../__models__/validation.constraint';
 })
 export class ValidationService {
 
-  baseUrl: string = AppSettings.API_ENDPOINT + '/validation';
+  baseUrl: string = AppSettings.API_ENDPOINT + '/validations';
 
   constructor(private http: HttpClient) { }
 

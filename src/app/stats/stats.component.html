@@ -1,8 +1,8 @@
 
 <mat-card appearance="outlined">
     <div class="simulation-status-container">
-        <span>Status</span>
         @if (simulationStatus) {
+            <span>Total Tickets Available</span>
             <span>{{ simulationStatus.totalTickets }} 🎟️</span>
         } @else {
             <span class="small">Not Started</span>

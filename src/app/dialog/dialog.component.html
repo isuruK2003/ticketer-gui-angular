@@ -3,10 +3,10 @@
   <p>{{ data.content }}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onClose()">Close</button>
   @if (data.confirmButton) {
     <button mat-button (click)="onConfirm()">
       {{ data.confirmButtonText || 'Confirm' }}
     </button>
   }
+  <button mat-button (click)="onClose()">Close</button>
 </mat-dialog-actions>

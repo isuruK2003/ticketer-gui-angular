@@ -1,88 +1,68 @@
 <div class="container">
     <mat-tab-group dynamicHeight>
         <mat-tab label="New Configuration">
-            <mat-stepper class="margin" [linear]="false" orientation="vertical" #stepper>
+            <mat-stepper class="margin" [linear]="false" orientation="horizontal" #stepper>
                 <form [formGroup]="configForm" (submit)="submitForm($event)">
-                    <mat-step label="Enter Total Tickets">
+                    <mat-step label="Total Tickets">
                     <div class="inputs">
-                        <mat-form-field class="width-custom">
+                        <mat-form-field appearance="outline" class="width-custom">
                             <mat-label>Total Tickets For vendor</mat-label>
                             <input id="totalTicketsForVendor" formControlName="totalTicketsForVendor" matInput type="number" required>
-                            @if (configForm.hasError('totalTicketsForVendor') && !configForm.hasError('required')) {
-                                <mat-error>Please enter a value between _ to _</mat-error>
-                            }
                         </mat-form-field>
-                        <mat-form-field class="width-custom">
+                        <mat-form-field appearance="outline" class="width-custom">
                             <mat-label>Total Tickets For Customer</mat-label>
                             <input id="totalTicketsForCustomer" formControlName="totalTicketsForCustomer" matInput type="number" required>
-                            @if (configForm.hasError('totalTicketsForCustomer') && !configForm.hasError('required')) {
-                                <mat-error>Please enter a value between _ to _</mat-error>
-                            }
                         </mat-form-field>
                     </div>
                     </mat-step>
 
-                    <mat-step label="Enter Total Vendors and Customers">
+                    <mat-step label="Total Vendors and Customers">
                     <div class="inputs">
-                        <mat-form-field class="width-custom">
+                        <mat-form-field appearance="outline" class="width-custom">
                                 <mat-label>Total Vendors</mat-label>
                                 <input id="totalVendors" formControlName="totalVendors" matInput type="number" required>
-                                @if (configForm.hasError('totalVendors') && !configForm.hasError('required')) {
-                                    <mat-error>Please enter a value between _ to _</mat-error>
-                                }
                         </mat-form-field>
-                        <mat-form-field class="width-custom">
+                        <mat-form-field appearance="outline" class="width-custom">
                                 <mat-label>Total Consumer</mat-label>
                                 <input id="totalConsumers" formControlName="totalConsumers" matInput type="number" required>
-                                @if (configForm.hasError('totalConsumers') && !configForm.hasError('required')) {
-                                    <mat-error>Please enter a value between _ to _</mat-error>
-                                }
                         </mat-form-field>
                     </div> 
                     </mat-step>
                 
-                    <mat-step label="Enter Ticket Release and Retrieval Rates">
+                    <mat-step label="Ticket Release and Retrieval Rates">
                     <div class="inputs">
-                        <mat-form-field class="width-custom">
-                            <mat-label>Ticket Release Rate</mat-label>
+                        <mat-form-field appearance="outline" class="width-custom">
+                            <mat-label>Ticket Release Rate (tickets per second)</mat-label>
                             <input id="ticketReleaseRate" formControlName="ticketReleaseRate" matInput type="number" required>
-                            @if (configForm.hasError('ticketReleaseRate') && !configForm.hasError('required')) {
-                                <mat-error>Please enter a value between _ to _</mat-error>
-                            }
                         </mat-form-field>
-                        <mat-form-field class="width-custom">
-                            <mat-label>Consumer Retrieval Rate</mat-label>
+                        <mat-form-field appearance="outline" class="width-custom">
+                            <mat-label>Consumer Retrieval Rate (tickets per second)</mat-label>
                             <input id="customerRetrievalRate" formControlName="customerRetrievalRate" matInput type="number" required>
-                            @if (configForm.hasError('customerRetrievalRate') && !configForm.hasError('required')) {
-                                <mat-error>Please enter a value between _ to _</mat-error>
-                            }
                         </mat-form-field>
                     </div>
                     </mat-step>
                 
                     <mat-step label="Maximum Ticket Capacity">
                     <div class="inputs">
-                        <mat-form-field class="width-custom">
+                        <mat-form-field appearance="outline" class="width-custom">
                             <mat-label>Maximum Ticket Capacity</mat-label>
                             <input id="maxTicketCapacity" formControlName="maxTicketCapacity" matInput type="number" required>
-                            @if (configForm.hasError('maxTicketCapacity') && !configForm.hasError('required')) {
-                                <mat-error>Please enter a value between _ to _</mat-error>
-                            }
                         </mat-form-field>
                     </div>
                     </mat-step>
                 
-                    <mat-step>
-                    <div class="inputs-end">
-                        <ng-template matStepLabel>Done</ng-template>        
-                        <button mat-stroked-button color="primary" type="submit" (click)="submitForm($event)">Configure</button>
-                        <button mat-stroked-button color="primary" type="reset" (click)="stepper.reset()">Reset</button>
-                    </div>
+                    <mat-step label="Configure">
+                        <div class="inputs-end">
+                            <ng-template matStepLabel>Done</ng-template>        
+                            <button mat-stroked-button color="primary" type="submit" (click)="submitForm($event)">Configure</button>
+                            <button mat-stroked-button color="primary" type="submit" (click)="saveForm()">Save</button>
+                            <button mat-stroked-button color="primary" type="reset" (click)="stepper.reset()">Reset</button>
+                        </div>
                     </mat-step>
                 </form>
             </mat-stepper>
         </mat-tab>
-        <mat-tab label="Past Configuration">
+        <mat-tab label="Saved Configuration">
             <mat-card class="margin overflow-hidden" appearance="outlined">
                 <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     <!-- totalTicketsForCustomer Column -->

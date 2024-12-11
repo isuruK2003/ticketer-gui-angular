@@ -55,4 +55,8 @@ export class SimulationService {
   clearConsumers() {
     return this.http.get<null>(this.baseUrl + '/clear-consumers');
   }
+
+  clearTicketPool() {
+    return this.http.get<null>(this.baseUrl + '/clear-ticket-pool');
+  }
 }
